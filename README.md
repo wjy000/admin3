@@ -14,35 +14,11 @@
 * 所有的接口都有端到端的测试用例覆盖，有代码变动都会全量跑一遍测试用例，保证功能绝对可用
 * 统一对象存储封装，实现应用和上传文件位置隔离，支持本地上传&所有符合S3标准（阿里云、华为云、MinIO等）的对象存储方案
 
-## 在线体验
+## 预设账号
 
 - admin / 123456 (拥有所有权限)
 - employee / employee (拥有部分权限)
 - guest / guest (拥有查看权限)
-
-演示地址： https://admin3.wetech.tech
-
-在线部署： https://gitpod.io/#https://github.com/cjbi/admin3
-
-## 项目预览
-
-<table>
-    <tr>
-        <td><img src="docs/image/login.jpg"/></td>
-        <td><img src="docs/image/user.png"/></td>
-    </tr>
-    <tr>
-        <td><img src="docs/image/role-auth.png"/></td>
-        <td><img src="docs/image/role-member.png"/></td>
-    </tr>
-    <tr>
-       <td><img src="docs/image/permission.png"/></td>
-       <td><img src="docs/image/log-list.png"/></td>
-    </tr>
-    <tr>
-       <td><img src="docs/image/storage.png"/></td>
-    </tr>
-</table>
 
 ## 技术文档
 
@@ -69,19 +45,3 @@
 - 修改application.yml文件，更改MySQL账号和密码
 - 启动服务，访问管理后台地址：http://localhost:8080/admin3
 - Swagger地址：http://localhost:8080/admin3/swagger-ui/index.html
-
-## 待办列表
-
-- [x] 操作日志
-
-- [x] 文件上传（常用第三方对象存储服务统一封装），支持修改用户头像
-
-- [ ] 国际化
-
-- [ ] 更多功能请 [Issues](https://github.com/cjbi/admin3/issues) 留言
-
-欢迎参与项目贡献！
-
-## 许可证
-
-[MIT](LICENSE)

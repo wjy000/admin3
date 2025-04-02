@@ -19,22 +19,22 @@ import java.util.List;
 @RequestMapping("/common")
 public class CommonController {
 
-  private final Admin3Properties admin3Properties;
+    private final Admin3Properties admin3Properties;
 
-  public CommonController(Admin3Properties admin3Properties) {
-    this.admin3Properties = admin3Properties;
-  }
+    public CommonController(Admin3Properties admin3Properties) {
+        this.admin3Properties = admin3Properties;
+    }
 
-  @GetMapping("/event-types")
-  public ResponseEntity<List<TypeInfo>> findEventTypes() {
-    List<TypeInfo> typeInfos = admin3Properties.getEvents().entrySet().stream()
-      .map(entry -> new TypeInfo(entry.getValue().getText(), entry.getKey()))
-      .toList();
-    return ResponseEntity.ok(typeInfos);
-  }
+    @GetMapping("/event-types")
+    public ResponseEntity<List<TypeInfo>> findEventTypes() {
+        List<TypeInfo> typeInfos = admin3Properties.getEvents().entrySet().stream()
+            .map(entry -> new TypeInfo(entry.getValue().getText(), entry.getKey()))
+            .toList();
+        return ResponseEntity.ok(typeInfos);
+    }
 
-  record TypeInfo(String label, String value) {
-  }
+    record TypeInfo(String label, String value) {
+    }
 
 
 }

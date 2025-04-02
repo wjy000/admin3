@@ -1,0 +1,14 @@
+server:
+    port: 8080
+spring:
+    jpa:
+        show-sql: true
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://192.168.199.29:3306/admin3?characterEncoding=utf8
+        username: admin3
+        password: icE66ySG3imhWr6r
+springdoc:
+    api-docs:
+        #是否开启文档功能
+        enabled: true

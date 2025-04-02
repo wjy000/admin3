@@ -16,7 +16,7 @@ mvn clean install
 - 运行部署
 ```shell
 cd admin3-server/target
-nohup java -jar -Dspring.datasource.url=xxx -Dspring.datasource.username=xxx -Dspring.datasource.password=xxx admin3-server-0.0.1-SNAPSHOT.jar >/dev/null 2>&1 &
+nohup java -jar -Xmx1024M -Xms256M admin3-server-0.0.1-SNAPSHOT.jar --server.port=8180 --spring.profiles.active=dev >/dev/null 2>&1 &
 ```
 
 - 打包JVM镜像

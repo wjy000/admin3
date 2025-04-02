@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tech.wetech.admin3.common.authz.RequiresPermissions;
-import tech.wetech.admin3.sys.service.LogService;
-import tech.wetech.admin3.sys.service.dto.LogDTO;
-import tech.wetech.admin3.sys.service.dto.PageDTO;
+import tech.wetech.admin3.service.LogService;
+import tech.wetech.admin3.service.dto.LogDTO;
+import tech.wetech.admin3.service.dto.PageDTO;
 
 import java.util.Arrays;
 import java.util.Set;
@@ -26,32 +26,32 @@ import static java.util.Optional.ofNullable;
 @RequestMapping("/logs")
 public class LogController {
 
-  private final LogService logService;
+    private final LogService logService;
 
-  public LogController(LogService logService) {
-    this.logService = logService;
-  }
+    public LogController(LogService logService) {
+        this.logService = logService;
+    }
 
-  @GetMapping
-  @RequiresPermissions("log:view")
-  public ResponseEntity<PageDTO<LogDTO>> findLogs(Pageable pageable, String typeNames) {
-    Set<String> typeNameSet = ofNullable(typeNames).stream()
-      .flatMap(t -> Arrays.stream(t.split(",")))
-      .collect(Collectors.toSet());
-    return ResponseEntity.ok(logService.findLogs(typeNameSet, pageable));
-  }
+    @GetMapping
+    @RequiresPermissions("log:view")
+    public ResponseEntity<PageDTO<LogDTO>> findLogs(Pageable pageable, String typeNames) {
+        Set<String> typeNameSet = ofNullable(typeNames).stream()
+            .flatMap(t -> Arrays.stream(t.split(",")))
+            .collect(Collectors.toSet());
+        return ResponseEntity.ok(logService.findLogs(typeNameSet, pageable));
+    }
 
 
-  /**
-   * 清空日志
-   *
-   * @return
-   */
-  @DeleteMapping
-  @RequiresPermissions("log:clean")
-  public ResponseEntity<Void> cleanLogs() {
-    logService.cleanLogs();
-    return ResponseEntity.noContent().build();
-  }
+    /**
+     * 清空日志
+     *
+     * @return
+     */
+    @DeleteMapping
+    @RequiresPermissions("log:clean")
+    public ResponseEntity<Void> cleanLogs() {
+        logService.cleanLogs();
+        return ResponseEntity.noContent().build();
+    }
 
 }

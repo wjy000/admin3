@@ -7,6 +7,6 @@ package tech.wetech.admin3.common;
  */
 public interface EventStore {
 
-  void append(DomainEvent aDomainEvent);
+    void append(DomainEvent aDomainEvent);
 
 }

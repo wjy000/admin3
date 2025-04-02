@@ -26,27 +26,27 @@ import static tech.wetech.admin3.Constants.TOKEN_HEADER_NAME;
 @AutoConfigureMockMvc
 public class LogControllerTest extends AbstractIntegrationTest {
 
-  @Autowired
-  private MockMvc mvc;
+    @Autowired
+    private MockMvc mvc;
 
-  @Test
-  @Order(0)
-  void testFindLogs() throws Exception {
-    mvc.perform(get("/logs")
-        .header(TOKEN_HEADER_NAME, TOKEN)
-      )
-      .andExpect(status().isOk())
-      .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
-      .andExpect(jsonPath("total", greaterThanOrEqualTo(2)));
-  }
+    @Test
+    @Order(0)
+    void testFindLogs() throws Exception {
+        mvc.perform(get("/logs")
+                .header(TOKEN_HEADER_NAME, TOKEN)
+            )
+            .andExpect(status().isOk())
+            .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
+            .andExpect(jsonPath("total", greaterThanOrEqualTo(2)));
+    }
 
-  @Test
-  @Order(1)
-  void testCleanLogs() throws Exception {
-    mvc.perform(delete("/logs")
-        .header(TOKEN_HEADER_NAME, TOKEN)
-      )
-      .andExpect(status().isNoContent());
-  }
+    @Test
+    @Order(1)
+    void testCleanLogs() throws Exception {
+        mvc.perform(delete("/logs")
+                .header(TOKEN_HEADER_NAME, TOKEN)
+            )
+            .andExpect(status().isNoContent());
+    }
 
 }

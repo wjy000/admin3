@@ -1,7 +1,7 @@
 package tech.wetech.admin3.service.dto;
 
-import tech.wetech.admin3.model.Role;
-import tech.wetech.admin3.model.User;
+import tech.wetech.admin3.entity.Role;
+import tech.wetech.admin3.entity.User;
 
 import java.time.LocalDateTime;
 import java.util.Set;

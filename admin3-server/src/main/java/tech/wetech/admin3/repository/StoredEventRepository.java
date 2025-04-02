@@ -4,7 +4,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import tech.wetech.admin3.model.StoredEvent;
+import tech.wetech.admin3.entity.StoredEvent;
 
 import java.util.Set;
 

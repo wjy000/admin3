@@ -5,8 +5,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import tech.wetech.admin3.model.Role;
-import tech.wetech.admin3.model.User;
+import tech.wetech.admin3.entity.Role;
+import tech.wetech.admin3.entity.User;
 
 /**
  * @author cjbi

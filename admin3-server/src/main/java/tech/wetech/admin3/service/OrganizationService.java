@@ -7,7 +7,7 @@ import tech.wetech.admin3.common.DomainEventPublisher;
 import tech.wetech.admin3.event.OrganizationCreated;
 import tech.wetech.admin3.event.OrganizationDeleted;
 import tech.wetech.admin3.event.OrganizationUpdated;
-import tech.wetech.admin3.model.Organization;
+import tech.wetech.admin3.entity.Organization;
 import tech.wetech.admin3.repository.OrganizationRepository;
 import tech.wetech.admin3.service.dto.OrgTreeDTO;
 import tech.wetech.admin3.exception.UserException;

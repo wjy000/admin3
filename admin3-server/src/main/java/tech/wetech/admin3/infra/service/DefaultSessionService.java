@@ -11,15 +11,15 @@ import tech.wetech.admin3.common.SessionItemHolder;
 import tech.wetech.admin3.event.UserLoggedIn;
 import tech.wetech.admin3.event.UserLoggedOut;
 import tech.wetech.admin3.exception.UserException;
-import tech.wetech.admin3.model.User;
-import tech.wetech.admin3.model.UserCredential;
+import tech.wetech.admin3.entity.User;
+import tech.wetech.admin3.entity.UserCredential;
 import tech.wetech.admin3.repository.UserCredentialRepository;
 import tech.wetech.admin3.service.SessionService;
 import tech.wetech.admin3.service.dto.UserinfoDTO;
 
 import java.util.UUID;
 
-import static tech.wetech.admin3.model.UserCredential.IdentityType.PASSWORD;
+import static tech.wetech.admin3.entity.UserCredential.IdentityType.PASSWORD;
 
 /**
  * @author cjbi

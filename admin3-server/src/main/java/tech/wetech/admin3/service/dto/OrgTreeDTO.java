@@ -1,6 +1,6 @@
 package tech.wetech.admin3.service.dto;
 
-import tech.wetech.admin3.model.Organization;
+import tech.wetech.admin3.entity.Organization;
 
 import java.util.List;
 

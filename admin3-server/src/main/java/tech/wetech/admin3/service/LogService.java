@@ -8,7 +8,7 @@ import tech.wetech.admin3.Admin3Properties.Event;
 import tech.wetech.admin3.common.CollectionUtils;
 import tech.wetech.admin3.common.JsonUtils;
 import tech.wetech.admin3.common.StringUtils;
-import tech.wetech.admin3.model.StoredEvent;
+import tech.wetech.admin3.entity.StoredEvent;
 import tech.wetech.admin3.repository.StoredEventRepository;
 import tech.wetech.admin3.service.dto.LogDTO;
 import tech.wetech.admin3.service.dto.PageDTO;

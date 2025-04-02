@@ -9,7 +9,7 @@ import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.PutObjectResponse;
-import tech.wetech.admin3.model.StorageConfig;
+import tech.wetech.admin3.entity.StorageConfig;
 
 import java.io.InputStream;
 import java.net.URI;

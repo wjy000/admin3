@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import tech.wetech.admin3.common.JsonUtils;
-import tech.wetech.admin3.model.Session;
-import tech.wetech.admin3.model.User;
-import tech.wetech.admin3.model.UserCredential;
+import tech.wetech.admin3.entity.Session;
+import tech.wetech.admin3.entity.User;
+import tech.wetech.admin3.entity.UserCredential;
 import tech.wetech.admin3.repository.SessionRepository;
 import tech.wetech.admin3.service.dto.UserinfoDTO;
 

@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import tech.wetech.admin3.model.StorageFile;
+import tech.wetech.admin3.entity.StorageFile;
 
 /**
  * @author cjbi

@@ -1,8 +1,8 @@
 package tech.wetech.admin3.service;
 
 import org.springframework.core.io.Resource;
-import tech.wetech.admin3.model.StorageConfig;
-import tech.wetech.admin3.model.StorageFile;
+import tech.wetech.admin3.entity.StorageConfig;
+import tech.wetech.admin3.entity.StorageFile;
 import tech.wetech.admin3.service.dto.StorageFileDTO;
 
 import java.io.InputStream;

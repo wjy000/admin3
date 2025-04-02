@@ -1,6 +1,6 @@
 package tech.wetech.admin3.infra.service;
 
-import tech.wetech.admin3.model.UserCredential;
+import tech.wetech.admin3.entity.UserCredential;
 
 import java.io.Serializable;
 

@@ -9,9 +9,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import tech.wetech.admin3.common.authz.RequiresPermissions;
-import tech.wetech.admin3.model.StorageConfig;
-import tech.wetech.admin3.model.StorageConfig.Type;
-import tech.wetech.admin3.model.StorageFile;
+import tech.wetech.admin3.entity.StorageConfig;
+import tech.wetech.admin3.entity.StorageConfig.Type;
+import tech.wetech.admin3.entity.StorageFile;
 import tech.wetech.admin3.service.StorageService;
 import tech.wetech.admin3.service.dto.StorageFileDTO;
 

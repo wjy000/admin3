@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import tech.wetech.admin3.common.CommonResultStatus;
 import tech.wetech.admin3.common.authz.RequiresPermissions;
 import tech.wetech.admin3.exception.UserException;
-import tech.wetech.admin3.model.Organization;
-import tech.wetech.admin3.model.User;
+import tech.wetech.admin3.entity.Organization;
+import tech.wetech.admin3.entity.User;
 import tech.wetech.admin3.service.OrganizationService;
 import tech.wetech.admin3.service.UserService;
 import tech.wetech.admin3.service.dto.OrgTreeDTO;
@@ -21,7 +21,7 @@ import tech.wetech.admin3.service.dto.PageDTO;
 
 import java.util.List;
 
-import static tech.wetech.admin3.model.Organization.Type;
+import static tech.wetech.admin3.entity.Organization.Type;
 
 /**
  * @author cjbi

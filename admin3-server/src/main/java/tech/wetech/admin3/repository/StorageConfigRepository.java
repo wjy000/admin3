@@ -3,7 +3,7 @@ package tech.wetech.admin3.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import tech.wetech.admin3.model.StorageConfig;
+import tech.wetech.admin3.entity.StorageConfig;
 
 /**
  * @author cjbi

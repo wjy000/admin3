@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import tech.wetech.admin3.common.Constants;
 import tech.wetech.admin3.common.SessionItemHolder;
 import tech.wetech.admin3.common.authz.RequiresPermissions;
-import tech.wetech.admin3.model.Resource;
+import tech.wetech.admin3.entity.Resource;
 import tech.wetech.admin3.service.ResourceService;
 import tech.wetech.admin3.service.dto.MenuResourceDTO;
 import tech.wetech.admin3.service.dto.ResourceTreeDTO;

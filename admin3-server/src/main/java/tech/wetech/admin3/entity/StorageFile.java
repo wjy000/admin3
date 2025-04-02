@@ -1,4 +1,4 @@
-package tech.wetech.admin3.model;
+package tech.wetech.admin3.entity;
 
 import jakarta.persistence.*;
 import tech.wetech.admin3.common.Constants;

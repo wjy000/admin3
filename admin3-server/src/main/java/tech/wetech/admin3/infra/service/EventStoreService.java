@@ -2,7 +2,7 @@ package tech.wetech.admin3.infra.service;
 
 import org.springframework.stereotype.Service;
 import tech.wetech.admin3.common.*;
-import tech.wetech.admin3.model.StoredEvent;
+import tech.wetech.admin3.entity.StoredEvent;
 import tech.wetech.admin3.repository.StoredEventRepository;
 import tech.wetech.admin3.repository.UserRepository;
 import tech.wetech.admin3.service.dto.UserinfoDTO;

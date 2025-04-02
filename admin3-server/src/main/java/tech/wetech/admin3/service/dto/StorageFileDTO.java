@@ -1,6 +1,6 @@
 package tech.wetech.admin3.service.dto;
 
-import tech.wetech.admin3.model.StorageFile;
+import tech.wetech.admin3.entity.StorageFile;
 
 import java.time.LocalDateTime;
 

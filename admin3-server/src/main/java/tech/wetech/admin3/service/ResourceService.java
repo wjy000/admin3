@@ -7,7 +7,7 @@ import tech.wetech.admin3.common.BusinessException;
 import tech.wetech.admin3.common.CommonResultStatus;
 import tech.wetech.admin3.common.DomainEventPublisher;
 import tech.wetech.admin3.common.authz.PermissionHelper;
-import tech.wetech.admin3.model.Resource;
+import tech.wetech.admin3.entity.Resource;
 import tech.wetech.admin3.event.ResourceCreated;
 import tech.wetech.admin3.event.ResourceDeleted;
 import tech.wetech.admin3.event.ResourceUpdated;

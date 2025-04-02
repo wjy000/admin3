@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import jakarta.persistence.*;
-import tech.wetech.admin3.model.BaseEntity;
+import tech.wetech.admin3.entity.BaseEntity;
 
 import java.io.IOException;
 import java.lang.annotation.Annotation;

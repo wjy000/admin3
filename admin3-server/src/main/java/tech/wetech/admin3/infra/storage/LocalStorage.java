@@ -1,6 +1,6 @@
 package tech.wetech.admin3.infra.storage;
 
-import tech.wetech.admin3.model.StorageConfig;
+import tech.wetech.admin3.entity.StorageConfig;
 
 import java.io.*;
 import java.nio.file.Files;

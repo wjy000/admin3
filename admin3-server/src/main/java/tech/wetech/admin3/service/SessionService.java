@@ -1,5 +1,6 @@
 package tech.wetech.admin3.service;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Service;
 import tech.wetech.admin3.service.dto.UserinfoDTO;
 
@@ -16,6 +17,11 @@ public interface SessionService {
     boolean isLogin(String token);
 
     UserinfoDTO getLoginUserInfo(String token);
+
+    /**
+     * 获取当前登录的用户
+     */
+    UserinfoDTO getCurrentUserInfo();
 
     void refresh();
 

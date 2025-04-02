@@ -1,6 +1,7 @@
 package tech.wetech.admin3.infra.service;
 
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -81,6 +82,11 @@ public class DefaultSessionService implements SessionService {
     @Override
     public UserinfoDTO getLoginUserInfo(String token) {
         return (UserinfoDTO) sessionManager.get(token);
+    }
+
+    @Override
+    public UserinfoDTO getCurrentUserInfo() {
+       return  (UserinfoDTO) SessionItemHolder.getItem(Constants.SESSION_CURRENT_USER);
     }
 
     @Override

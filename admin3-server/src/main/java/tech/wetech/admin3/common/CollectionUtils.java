@@ -9,8 +9,6 @@ import java.util.*;
  */
 public class CollectionUtils {
 
-    //TODO - complete JavaDoc
-
     public static <E> Set<E> asSet(E... elements) {
         if (elements == null || elements.length == 0) {
             return Collections.emptySet();

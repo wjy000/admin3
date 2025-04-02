@@ -1,19 +1,32 @@
 package tech.wetech.admin3.controller;
 
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tech.wetech.admin3.common.CommonResultStatus;
+import tech.wetech.admin3.common.SecurityUtil;
 import tech.wetech.admin3.common.authz.RequiresPermissions;
 import tech.wetech.admin3.entity.Organization;
 import tech.wetech.admin3.entity.User;
+import tech.wetech.admin3.entity.UserCredential;
+import tech.wetech.admin3.exception.UserException;
+import tech.wetech.admin3.repository.UserCredentialRepository;
 import tech.wetech.admin3.service.OrganizationService;
+import tech.wetech.admin3.service.SessionService;
 import tech.wetech.admin3.service.UserService;
 import tech.wetech.admin3.service.dto.PageDTO;
+import tech.wetech.admin3.service.dto.UserinfoDTO;
+
+import java.security.NoSuchAlgorithmException;
+import java.util.Optional;
 
 /**
  * @author cjbi
@@ -25,10 +38,14 @@ public class UserController {
 
     private final OrganizationService organizationService;
     private final UserService userService;
+    private final SessionService sessionService;
+    @Autowired
+    private UserCredentialRepository userCredentialRepository;
 
-    public UserController(OrganizationService organizationService, UserService userService) {
+    public UserController(OrganizationService organizationService, UserService userService, SessionService sessionService) {
         this.organizationService = organizationService;
         this.userService = userService;
+        this.sessionService = sessionService;
     }
 
     @RequiresPermissions("user:view")
@@ -78,4 +95,27 @@ public class UserController {
                              @NotBlank String avatar, Long organizationId) {
     }
 
+    //账户编辑
+    @PutMapping("/editAccount")
+    public ResponseEntity<Void> editAccount(@RequestParam String newPassword, @RequestParam String oldPassword, @RequestParam String desc) throws NoSuchAlgorithmException {
+        UserinfoDTO userInfo = sessionService.getCurrentUserInfo();
+
+        Optional<UserCredential> credentialOptional = userCredentialRepository.findCredential(userInfo.username(), UserCredential.IdentityType.PASSWORD);
+        if (credentialOptional.isEmpty()) {
+            throw new UserException(CommonResultStatus.FAIL, "用户密钥不存在");
+        }
+        UserCredential credential = credentialOptional.get();
+        if (!credential.doCredentialMatch(oldPassword)) {
+            throw new UserException(CommonResultStatus.FAIL, "旧密码不正确");
+        }
+        String newCredential = SecurityUtil.md5(userInfo.username(), newPassword);
+        credential.setCredential(newCredential);
+        userCredentialRepository.save(credential);
+
+        User user = userService.findUserById(userInfo.userId());
+        user.setDesc(desc);
+        userService.getUserRepository().save(user);
+
+        return ResponseEntity.ok().build();
+    }
 }

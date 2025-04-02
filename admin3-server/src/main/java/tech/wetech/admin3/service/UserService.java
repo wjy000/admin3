@@ -1,5 +1,6 @@
 package tech.wetech.admin3.service;
 
+import lombok.Getter;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,6 +31,7 @@ import static tech.wetech.admin3.common.CommonResultStatus.RECORD_NOT_EXIST;
 @Service
 public class UserService {
 
+    @Getter
     private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {

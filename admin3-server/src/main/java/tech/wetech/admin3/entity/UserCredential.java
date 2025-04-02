@@ -39,10 +39,9 @@ public class UserCredential extends BaseEntity {
     public UserCredential() {
     }
 
-    public boolean doCredentialMatch(String credential) {
+    public boolean doCredentialMatch(String password) {
         try {
-            //TODO 未实现其他登录方式
-            if (this.getIdentityType() != IdentityType.PASSWORD || !SecurityUtil.md5(identifier, credential).equals(this.getCredential())) {
+            if (this.getIdentityType() != IdentityType.PASSWORD || !SecurityUtil.md5(identifier, password).equals(this.getCredential())) {
                 return false;
             }
         } catch (NoSuchAlgorithmException e) {

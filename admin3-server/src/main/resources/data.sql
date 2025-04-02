@@ -2,12 +2,12 @@
 set
 foreign_key_checks = 0;
 
-INSERT INTO user (id, username, avatar, created_time, gender, state, organization_id)
-VALUES (1, 'admin', 'avatar.jpg', '2023-01-05 17:16:11.000000', 0, 0, 1);
-INSERT INTO user (id, username, avatar, created_time, gender, state, organization_id)
-VALUES (2, 'employee', 'avatar.jpg', '2023-01-05 17:16:11.000000', 1, 0, 3);
-INSERT INTO user (id, username, avatar, created_time, gender, state, organization_id)
-VALUES (3, 'guest', 'avatar.jpg', '2023-01-05 17:16:11.000000', 0, 0, 3);
+INSERT INTO user (id, username, avatar, created_time, gender, state, organization_id, desc)
+VALUES (1, 'admin', 'avatar.jpg', '2023-01-05 17:16:11.000000', 0, 0, 1, "不可能！我的代码怎么可能会有bug！");
+INSERT INTO user (id, username, avatar, created_time, gender, state, organization_id, desc)
+VALUES (2, 'employee', 'avatar.jpg', '2023-01-05 17:16:11.000000', 1, 0, 3, "");
+INSERT INTO user (id, username, avatar, created_time, gender, state, organization_id, desc)
+VALUES (3, 'guest', 'avatar.jpg', '2023-01-05 17:16:11.000000', 0, 0, 3, "");
 
 INSERT INTO user_credential (id, credential, identifier, identity_type, user_id)
 VALUES (1, 'a66abb5684c45962d887564f08346e8d', 'admin', 0, 1);

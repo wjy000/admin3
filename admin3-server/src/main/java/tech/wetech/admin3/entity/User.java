@@ -32,6 +32,12 @@ public class User extends BaseEntity {
     @Column
     private LocalDateTime createdTime;
 
+    /**
+     * 个人简介
+     */
+    @Column
+    private String desc;
+
     @ManyToMany(fetch = LAZY, cascade = CascadeType.DETACH)
     @JoinTable(name = "user_role",
         joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
@@ -139,6 +145,14 @@ public class User extends BaseEntity {
 
     public void setOrganization(Organization organization) {
         this.organization = organization;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public enum Gender {

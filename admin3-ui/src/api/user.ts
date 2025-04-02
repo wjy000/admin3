@@ -45,3 +45,12 @@ export function enableUser(userId: number) {
         method: 'post'
     });
 }
+
+//editAccount
+export function editAccount(data: { newPassword: string; oldPassword: string; desc: string; }) {
+    return request({
+        url: `${BASE_URI}/users/editAccount`,
+        method: 'put',
+        params: data
+    });
+}

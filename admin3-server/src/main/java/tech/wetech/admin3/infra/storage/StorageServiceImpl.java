@@ -1,5 +1,6 @@
 package tech.wetech.admin3.infra.storage;
 
+import org.aspectj.util.FileUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;
@@ -155,7 +156,9 @@ public class StorageServiceImpl implements StorageService {
         String key = null;
         StorageFile storageFile = null;
         do {
-            key = getRandomString(5) + "_" + filename;
+            String name = filename.substring(0, filename.lastIndexOf("."));
+            String ext = filename.substring(filename.lastIndexOf(".") + 1);
+            key = name + "_" + getRandomString(10) + "." + ext;
             storageFile = storageFileRepository.getByKey(key);
         } while (storageFile != null);
         return key;

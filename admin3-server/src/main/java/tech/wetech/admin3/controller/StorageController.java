@@ -101,6 +101,7 @@ public class StorageController {
         return ResponseEntity.ok(responses);
     }
 
+    //匹配无文件夹
     @GetMapping("/fetch/{key:.+}")
     public ResponseEntity<Resource> fetch(@PathVariable String key) {
         if (key == null) {
@@ -120,6 +121,20 @@ public class StorageController {
             return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok().contentType(mediaType).body(resource);
+    }
+
+    //匹配一层文件夹
+    @GetMapping("/fetch/{dir}/{key:.+}")
+    public ResponseEntity<Resource> fetch(@PathVariable String dir, @PathVariable String key) {
+        String s = dir + "/" + key;
+        return fetch(s);
+    }
+
+    //匹配二层文件夹
+    @GetMapping("/fetch/{dir1}/{dir2}/{key:.+}")
+    public ResponseEntity<Resource> fetch(@PathVariable String dir1, @PathVariable String dir2, @PathVariable String key) {
+        String s = dir1 + "/" + dir2 + "/" + key;
+        return fetch(s);
     }
 
     @GetMapping("/download/{key:.+}")

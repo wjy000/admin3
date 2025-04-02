@@ -240,7 +240,7 @@ VALUES (4, 15);
 
 INSERT INTO storage_config (type, id, is_default, name, address, storage_path, access_key, bucket_name, endpoint,
                             secret_key, create_time, create_user, storage_id)
-VALUES (0, 1, true, '本地', 'storage/fetch/', 'files', null, null, null, null, '2023-07-10 17:00:48.000000', 'admin',
+VALUES (0, 1, true, '本地', 'storage/fetch/', 'local/storage', null, null, null, null, '2023-07-10 17:00:48.000000', 'admin',
         'SsIPzgpd9rFgxJhe3yUxk');
 
 -- 开启外键约束检查

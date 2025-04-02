@@ -37,7 +37,9 @@ public class LocalStorage implements Storage {
     @Override
     public void store(InputStream inputStream, long contentLength, String contentType, String keyName) {
         try {
-            Files.copy(inputStream, rootLocation.resolve(keyName), StandardCopyOption.REPLACE_EXISTING);
+            Path resolve = rootLocation.resolve(keyName);
+            resolve.getParent().toFile().mkdirs();
+            Files.copy(inputStream, resolve, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             throw new RuntimeException("Failed to store file " + keyName, e);
         }

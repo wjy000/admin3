@@ -72,7 +72,7 @@ const saveAvatar = () => {
   fetch(cropImg.value)
     .then(response => response.blob())
     .then(blob => {
-      const file = new File([blob], "avatar.png", {type: blob.type})
+      const file = new File([blob], "avatar/avatar.png", {type: blob.type})
       upload({files: file}).then(res => {
         emits('onSelect', res.data[0]?.url);
 

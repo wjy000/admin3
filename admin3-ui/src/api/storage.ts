@@ -56,6 +56,7 @@ export function markAsDefaultConfig(id: number) {
   });
 }
 
+//最多只支持2层文件夹, 因为后端接口 /storage 只匹配了3种
 export function upload(data: { storageId?: string, files: any }) {
   return request({
     url: `${BASE_URI}/storage/upload`,

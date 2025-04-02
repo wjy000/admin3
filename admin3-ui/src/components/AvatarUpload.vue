@@ -21,7 +21,7 @@
           >选择图片
 						<input class="crop-input" type="file" name="image" accept="image/*" @change="setImage"/>
 					</el-button>
-					<el-button type="primary" @click="saveAvatar">上传并保存</el-button>
+					<el-button v-if="cropImg.length > 10" type="primary" @click="saveAvatar">上传并保存</el-button>
 				</span>
     </template>
   </el-dialog>
@@ -31,6 +31,7 @@ import VueCropper from 'vue-cropperjs';
 import 'cropperjs/dist/cropper.css';
 import {ref, watch} from "vue";
 import {upload} from "../api/storage";
+import {ElMessage} from "element-plus";
 
 const props = defineProps(['imgSrc']);
 const emits = defineEmits(['onSelect']);

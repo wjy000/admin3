@@ -7,6 +7,7 @@ interface UserStore {
         userId: number | null;
         username: string;
         avatar: string;
+        desc: string;
         credential: { identifier: string, identityType: IdentityType };
         permissions: [];
     }

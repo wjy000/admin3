@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tech.wetech.admin3.common.CommonResultStatus;
 import tech.wetech.admin3.common.SecurityUtil;
+import tech.wetech.admin3.common.StringUtils;
 import tech.wetech.admin3.common.authz.RequiresPermissions;
 import tech.wetech.admin3.entity.Organization;
 import tech.wetech.admin3.entity.User;
@@ -100,21 +101,26 @@ public class UserController {
     public ResponseEntity<Void> editAccount(@RequestParam String newPassword, @RequestParam String oldPassword, @RequestParam String desc) throws NoSuchAlgorithmException {
         UserinfoDTO userInfo = sessionService.getCurrentUserInfo();
 
-        Optional<UserCredential> credentialOptional = userCredentialRepository.findCredential(userInfo.username(), UserCredential.IdentityType.PASSWORD);
-        if (credentialOptional.isEmpty()) {
-            throw new UserException(CommonResultStatus.FAIL, "用户密钥不存在");
+        if (!StringUtils.isEmpty(oldPassword) && !StringUtils.isEmpty(newPassword)) {
+            Optional<UserCredential> credentialOptional = userCredentialRepository.findCredential(userInfo.username(), UserCredential.IdentityType.PASSWORD);
+            if (credentialOptional.isEmpty()) {
+                throw new UserException(CommonResultStatus.FAIL, "用户密钥不存在");
+            }
+            UserCredential credential = credentialOptional.get();
+            if (!credential.doCredentialMatch(oldPassword)) {
+                throw new UserException(CommonResultStatus.FAIL, "旧密码不正确");
+            }
+            String newCredential = SecurityUtil.md5(userInfo.username(), newPassword);
+            credential.setCredential(newCredential);
+            userCredentialRepository.save(credential);
         }
-        UserCredential credential = credentialOptional.get();
-        if (!credential.doCredentialMatch(oldPassword)) {
-            throw new UserException(CommonResultStatus.FAIL, "旧密码不正确");
-        }
-        String newCredential = SecurityUtil.md5(userInfo.username(), newPassword);
-        credential.setCredential(newCredential);
-        userCredentialRepository.save(credential);
 
         User user = userService.findUserById(userInfo.userId());
         user.setDesc(desc);
         userService.getUserRepository().save(user);
+
+        //refersh userinfo
+        sessionService.refresh();
 
         return ResponseEntity.ok().build();
     }

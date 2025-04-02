@@ -48,7 +48,7 @@ public class DefaultSessionService implements SessionService {
                 throw new UserException(CommonResultStatus.UNAUTHORIZED, "用户已经停用，请与管理员联系");
             }
             String token = UUID.randomUUID().toString().replace("-", "");
-            UserinfoDTO userinfo = new UserinfoDTO(token, user.getId(), user.getUsername(), user.getAvatar(), new UserinfoDTO.Credential(credential.getIdentifier(), credential.getIdentityType()), user.findPermissions());
+            UserinfoDTO userinfo = new UserinfoDTO(token, user.getId(), user.getUsername(), user.getAvatar(), user.getDesc(), new UserinfoDTO.Credential(credential.getIdentifier(), credential.getIdentityType()), user.findPermissions());
             sessionManager.store(token, credential, userinfo);
             SessionItemHolder.setItem(Constants.SESSION_CURRENT_USER, userinfo);
             DomainEventPublisher.instance().publish(new UserLoggedIn(userinfo, getClientIP()));
@@ -86,7 +86,7 @@ public class DefaultSessionService implements SessionService {
 
     @Override
     public UserinfoDTO getCurrentUserInfo() {
-       return  (UserinfoDTO) SessionItemHolder.getItem(Constants.SESSION_CURRENT_USER);
+        return (UserinfoDTO) SessionItemHolder.getItem(Constants.SESSION_CURRENT_USER);
     }
 
     @Override

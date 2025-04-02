@@ -16,7 +16,7 @@
 							</span>
                         </div>
                         <div class="info-name">{{ username }}</div>
-                        <div class="info-desc">不可能！我的代码怎么可能会有bug！</div>
+                        <div class="info-desc">{{ desc}}</div>
                     </div>
                 </el-card>
             </el-col>
@@ -76,11 +76,22 @@ import {useBasicStore} from "../store/basic";
 import {editAccount} from "../api/user";
 import {ElMessage} from "element-plus";
 
+const basicStore = useBasicStore();
+const userinfo = basicStore.userinfo;
+const username = ref(userinfo.username);
+const avatarImg = ref(userinfo.avatar);
+const desc = ref(userinfo.desc);
+const imgSrc = ref('');
+const cropImg = ref('');
+const dialogVisible = ref(false);
+const cropper: any = ref();
+
 const form = reactive({
     old: '',
     new: '',
-    desc: '不可能！我的代码怎么可能会有bug！'
+    desc: desc.value
 });
+
 const onSubmit = () => {
     editAccount({
         newPassword: form.new,
@@ -90,14 +101,6 @@ const onSubmit = () => {
         ElMessage.success(`修改成功`);
     })
 };
-const basicStore = useBasicStore();
-const userinfo = basicStore.userinfo;
-const username = ref(userinfo.username);
-const avatarImg = ref(userinfo.avatar);
-const imgSrc = ref('');
-const cropImg = ref('');
-const dialogVisible = ref(false);
-const cropper: any = ref();
 
 const showDialog = () => {
     dialogVisible.value = true;

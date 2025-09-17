@@ -1,5 +1,6 @@
 package tech.wetech.admin3.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.LinkedHashSet;
@@ -22,12 +23,14 @@ public class Role extends BaseEntity {
 
     private Boolean available = Boolean.FALSE;
 
+    @JsonIgnore//避免循环加载数据
     @ManyToMany(fetch = FetchType.LAZY, cascade = DETACH)
     @JoinTable(name = "role_resource",
         joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"),
         inverseJoinColumns = @JoinColumn(name = "resource_id", referencedColumnName = "id"))
     private Set<Resource> resources = new LinkedHashSet<>();
 
+    @JsonIgnore//避免循环加载数据
     @ManyToMany(fetch = FetchType.LAZY, cascade = DETACH)
     @JoinTable(name = "user_role",
         joinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"),
